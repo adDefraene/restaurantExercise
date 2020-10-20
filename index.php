@@ -1,3 +1,28 @@
+<?php
+    namespace App;
+//AUTOLOADER
+    require "classes/Autoloader.php";
+    Autoloader::register();
+
+//ROUTER
+    $router = [
+        "home" => "templates/home.php",
+        "menu" => "templates/menu.php",
+        "dish" => "templates/dish.php",
+        "order" => "templates/order.php"
+    ];
+
+    if(isset($_GET['location'])){
+        if(array_key_exists($_GET['location'], $router)){
+            $page = $router[$_GET['location']];
+        }else{
+            $page = "templates/404.php";
+        }
+    }else{
+        $page = "templates/home.php";
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,53 +32,8 @@
     <title>POO 6 - Restaurant exercice</title>
 </head>
 <body>
-    <nav class="home">
-        <img src="images/mario_logo.png" alt="Restaurant's logo">
-        <ul>
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">MENU</a></li>
-            <li><a href="#">CONTACT</a></li>
-            <li><a href="#">ORDER</a></li>
-        </ul>
-    </nav>
-    <header>
-        <img src="images/mario_logo_shaded.png" alt="Restaurant's logo">
-    </header>
-    <section id="section-home">
-        <div class="container">
-            <h1>WEEK'S SPECIALS</h1>
-            <div class="row">
-                <div class="card">
-                    <div class="card-row">
-                        <img src="images/lasagna.jpg" alt="Chef's lasagna">
-                        <a href="#">CHEF'S LASAGNA</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-row">
-                        <img src="images/pizza1.jpg" alt="Chef's lasagna">
-                        <a href="#">CHEF'S LASAGNA</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-row">
-                        <img src="images/scampis.jpg" alt="Chef's lasagna">
-                        <a href="#">CHEF'S LASAGNA</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <a href="#" class="button button-home">ORDER A MEAL</a>
-                <a href="#" class="link">REST OF THE MENU</a>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <div class="container">
-            <div id="footer-line1"></div>
-            <p>(c) EPSE LADP 2020 - WEBD2</p>
-            <div id="footer-line2"></div>
-        </div>
-    </footer>
+    <?php include("templates/nav.php") ?>
+    <?php include($page) ?>
+    <?php include("templates/footer.php") ?>
 </body>
 </html>

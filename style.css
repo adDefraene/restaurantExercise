@@ -55,7 +55,6 @@ html, body{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-bottom: 50px;
 }
 
 /********* MEALS CARDS **********/
@@ -67,6 +66,11 @@ html, body{
     box-sizing: border-box;
     padding: 15px;
     transition: all 0.2s;
+    margin-bottom: 50px;
+}
+
+.card:nth-child(3n+2){
+    margin: 0 12.5%;
 }
 
 .card .card-row{
@@ -108,6 +112,7 @@ html, body{
     font-size: 24px;
     text-decoration: none;
     text-align: center;
+    font-style: italic;
     font-weight: var(--bold);
     color: var(--white);
 }
@@ -139,6 +144,12 @@ h1{
     font-size: 36px;
     text-align: center;
     margin: 25px 0;
+}
+
+h2{
+    font-weight: var(--bold);
+    font-size: 48px;
+    text-align: center;
 }
 
 
@@ -247,4 +258,78 @@ header img{
     transform: translateX(-50%);
     height: 12vh;
     width: auto;
+}
+
+/******************* DISH ********************/
+
+#section-dish{grid-template-columns: 1fr 10fr 1fr;}
+
+.button-dish{width:50%;}
+
+.container-dish{
+    margin: 10vh 0;
+    display: flex;
+}
+
+.container-dish img{
+    width: 50%;
+    height: auto;
+    margin-right: 10%;
+}
+
+.container-dish article{
+    padding: 40px 0;
+    flex: initial;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.container-dish p{
+    line-height: 40px;
+    text-align: center;
+}
+
+.container-dish h4{
+    font-style: italic;
+    font-size: 36px;
+    margin: 0 auto;
+}
+
+/******************* DISH ********************/
+
+#section-dish{grid-template-columns: 1fr 10fr 1fr;}
+
+/******************* ORDER ********************/
+
+#section-order{grid-template-columns: 1fr 1fr 1fr;}
+
+.container-order{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.container-order h4{
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 42px;
+}
+
+.container-order .row input, .container-order select{
+    margin-bottom: 72px !important;
+    height: 40px;
+    font-size: 16px;
+    font-family: "Trueno";
+    font-weight: var(--light);
+}
+
+.container-order select{width: 100%;}
+.container-order input{width: 45%;}
+
+.container input.button{
+    border: none;
+    font-family: "Trueno";
+    margin: 0 auto;
 }

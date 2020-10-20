@@ -1,12 +1,21 @@
+<?php
+    //EXECUTE PREPARE REQ
+    $dish = $db->prepareReq(
+        "SELECT * FROM dishes WHERE dishes.id = ?",
+        [$_GET['id']],
+        "Dishes",
+        true
+    );
+?>
 <section id="section-dish">
     <div class="container container-dish">
-        <img src="images/lasagna.jpg" alt="Chef's lasagna">
+        <img src="images/<?= $dish->image ?>" alt="Picture of the <?= $dish->dish ?> meal">
         <article>
-            <h2>CHEF'S LASAGNA</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt obcaecati nesciunt fugiat minus culpa veniam et ratione earum, eum omnis est quod! Magni, labore! Aliquam culpa praesentium unde temporibus quas id possimus ipsam iusto.</p>
+            <h2><?= strtoupper($dish->dish) ?></h2>
+            <p><?= $dish->description ?></p>
             <div class="row">
-                <h4>$12.95</h4>
-                <a href="index.php?location=order&order=1" class="button button-dish">ORDER THIS</a>
+                <h4>$<?= $dish->price ?></h4>
+                <a href="<?= $dish->getOrderUrl() ?>" class="button button-dish">ORDER THIS</a>
             </div>
         </article>
     </div>

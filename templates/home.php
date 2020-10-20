@@ -5,24 +5,13 @@
     <div class="container">
         <h1>WEEK'S SPECIALS</h1>
         <div class="row">
-            <div class="card">
-                <div class="card-row">
-                    <img src="images/lasagna.jpg" alt="Chef's lasagna">
-                    <a href="index.php?location=dish&id=1">CHEF'S LASAGNA</a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-row">
-                    <img src="images/pizza1.jpg" alt="Chef's lasagna">
-                    <a href="index.php?location=dish&id=1">CHEF'S LASAGNA</a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-row">
-                    <img src="images/scampis.jpg" alt="Chef's lasagna">
-                    <a href="index.php?location=dish&id=1">CHEF'S LASAGNA</a>
-                </div>
-            </div>
+        <?php
+            //REQUEST FOR THE LAST 3 DISHES
+            foreach($db->queryReq(
+                "SELECT  dishes.id, dishes.dish, dishes.image FROM dishes ORDER BY dishes.id DESC LIMIT 0,3",
+                "Cards"
+            ) as $dish) : echo $dish->getCard();
+            endforeach ?>
         </div>
         <div class="row">
             <a href="index.php?location=order" class="button button-home">ORDER A MEAL</a>
